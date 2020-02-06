@@ -5,13 +5,13 @@ namespace app\models\db;
 use Yii;
 
 /**
- * This is the model class for table "books".
+ * This is the model class for table "book".
  *
  * @property int $id
  * @property string $title
  * @property int $author_id
  *
- * @property Authors $author
+ * @property Author $author
  */
 class Book extends \yii\db\ActiveRecord
 {
@@ -20,7 +20,7 @@ class Book extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'books';
+        return 'book';
     }
 
     /**
@@ -32,7 +32,7 @@ class Book extends \yii\db\ActiveRecord
             [['title', 'author_id'], 'required'],
             [['author_id'], 'integer'],
             [['title'], 'string', 'max' => 255],
-            [['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => Authors::className(), 'targetAttribute' => ['author_id' => 'id']],
+            [['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => Author::className(), 'targetAttribute' => ['author_id' => 'id']],
         ];
     }
 
@@ -55,6 +55,6 @@ class Book extends \yii\db\ActiveRecord
      */
     public function getAuthor()
     {
-        return $this->hasOne(Authors::className(), ['id' => 'author_id']);
+        return $this->hasOne(Author::className(), ['id' => 'author_id']);
     }
 }

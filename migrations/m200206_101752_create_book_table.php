@@ -3,9 +3,9 @@
 use yii\db\Migration;
 
 /**
- * Handles the creation of table `{{%books}}`.
+ * Handles the creation of table `{{%book}}`.
  */
-class m200206_101752_create_books_table extends Migration
+class m200206_101752_create_book_table extends Migration
 {
     /**
      * {@inheritdoc}
@@ -16,13 +16,13 @@ class m200206_101752_create_books_table extends Migration
         if ($this->db->driverName === 'mysql') {
             $tableOptions = 'CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE=InnoDB';
         }
-        $this->createTable('{{%books}}', [
+        $this->createTable('{{%book}}', [
             'id' => $this->primaryKey(),
             'title' => $this->string()->notNull(),
             'author_id' => $this->integer()->notNull(),
         ], $tableOptions);
 
-        $this->addForeignKey('{{%fk-books-author}}', '{{%books}}', 'author_id', '{{%authors}}', 'id', 'cascade', 'cascade');
+        $this->addForeignKey('{{%fk-book-author}}', '{{%book}}', 'author_id', '{{%author}}', 'id', 'cascade', 'cascade');
     }
 
     /**
@@ -30,6 +30,6 @@ class m200206_101752_create_books_table extends Migration
      */
     public function safeDown()
     {
-        $this->dropTable('{{%books}}');
+        $this->dropTable('{{%book}}');
     }
 }
