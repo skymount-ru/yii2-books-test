@@ -2,7 +2,9 @@
 
 namespace app\controllers;
 
+use app\models\Author;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
@@ -61,7 +63,16 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->render('index', [
+            'dataProvider' => new ActiveDataProvider([
+                'query' => Author::find(),
+                'sort' => [
+                    'defaultOrder' => [
+                        'name' => SORT_ASC,
+                    ],
+                ],
+            ]),
+        ]);
     }
 
     /**
