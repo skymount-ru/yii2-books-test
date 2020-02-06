@@ -47,12 +47,17 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'GET /api/books/list' => 'api-v1/books/index',
+                'GET /api/books/by-id/<id:\d+>' => 'api-v1/books/view',
             ],
         ],
     ],
     'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Module',
+        ],
+        'api-v1' => [
+            'class' => 'app\modules\apiV1\Module',
         ],
     ],
     'params' => $params,
