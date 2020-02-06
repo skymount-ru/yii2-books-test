@@ -47,8 +47,8 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'GET /api/books/list' => 'api-v1/books/index',
-                'GET /api/books/by-id/<id:\d+>' => 'api-v1/books/view',
+                'GET /api/v1/books/list' => 'api-v1/books/index',
+                'GET /api/v1/books/by-id/<id:\d+>' => 'api-v1/books/view',
             ],
         ],
     ],
